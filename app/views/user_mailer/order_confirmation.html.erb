@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order!</h1>
+    <p>
+      Confirmation of order #<%= @order.id %>.<br>
+    </p>
+    <p>
+      You ordered the following items:
+      <% @order.line_items.each do |line_item| %>
+      <% end %>
+    </p>
+    <p>Thanks for your order and have a great day!</p>
+  </body>
+</html>
