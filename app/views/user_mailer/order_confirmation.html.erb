@@ -4,15 +4,17 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thank you for your order!</h1>
-    <p>
-      Confirmation of order #<%= @order.id %>.<br>
-    </p>
-    <p>
-      You ordered the following items:
-      <% @order.line_items.each do |line_item| %>
+    <h1>Hello Jungle-Shopper,</h1>
+    <h2>
+      Here is a summary of your order:
+    </h2>
+    <h3>Order Id: <%= @order.id %></h3>
+        <% @order.line_items.each do |line_item| %>
+        <%= line_item.product.name %>
+        <%= line_item.quantity %>
       <% end %>
     </p>
+    <h1>Order Total: <%= @order.total_cents %></h1>
     <p>Thanks for your order and have a great day!</p>
   </body>
 </html>
