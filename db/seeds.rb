@@ -133,4 +133,47 @@ cat3.products.create!({
 })
 
 
+
+## REVIEWS
+
+puts "Re-creating Products ..."
+
+Review.destroy_all
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 3
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: 'Not very classy, actually',
+  rating: 1
+})
+
+Review.create!({
+  product_id: 1,
+  user_id: 1,
+  description: 'Fantastic',
+  rating: 3
+})
+
+Review.create!({
+  product_id: 3,
+  user_id: 1,
+  description: 'Matches Hipster Socks',
+  rating: 5
+})
+
+Review.create!({
+  product_id: 8,
+  user_id: 3,
+  description: 'Great for adding hot dogs to the salad mix',
+  rating: 1
+})
+
+
 puts "DONE!"
