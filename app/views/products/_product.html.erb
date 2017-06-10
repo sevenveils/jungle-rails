@@ -10,10 +10,10 @@
   </p>
    <p>
    <% if product.reviews.average(:rating) == nil %>
-    Not Yet Rated
+    <h5>Not Yet Rated</h5>
     <%else%>
-   Average Rating
-     <%= product.reviews.average(:rating)%>
+   <h5>Average Rating
+     <%= product.reviews.average(:rating)%> </h5>
    <%end%>
   </p>
 

@@ -11,10 +11,6 @@ class ReviewsController < ApplicationController
     @review.product_id = params[:product_id]
     @review.user_id = current_user.id
 
-    # Another option, but results in `no such method reviews for nil:NilClass` if the product doesn't exist
-    # @product = product.find(params[:product_id])
-    # @review = @product.reviews.new(review_params)
-
     if @review.save
       redirect_to @review.product, notice: 'Review was successfully created.'
     else

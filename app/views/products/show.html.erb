@@ -5,9 +5,7 @@
   </header>
 
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
@@ -25,18 +23,14 @@
         </dl>
       </div>
     </div>
-
   </article>
-
   <div class="reviews">
-
     <% if current_user %>
       <h2>Create a new review</h2>
     <%= form_for([@product, @new_review]) do |form| %>
-
       <div class="field">
         <%= form.label :description %>
-        <%= form.text_area :description, id: :review_description, size: "10x5" %>
+        <%= form.text_area :description, id: :review_description %><br>
         <%= form.label :rating %>
         <%= form.select :rating, ['1', '2', '3', '4', '5']%>
         <%= form.hidden_field :user_id, value: current_user.id %>
@@ -55,7 +49,5 @@
     <% else %>
       <%= render @sorted_reviews %>
     <% end %>
-
   </div>
-
 </section>

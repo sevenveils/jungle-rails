@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
 
   namespace :admin do
-    root to: 'dashboard#index'
+    root to: 'products#index'
     resources :products, except: [:edit, :update, :show]
     resources :categories, except: [:destroy]
   end
