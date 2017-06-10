@@ -5,16 +5,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find params[:id]
+    @product = Product.find(params[:id])
     @new_review = Review.new
+    @sorted_reviews = Review.where("product_id = ?", @product.id).order(created_at: :desc)
   end
 
-  # private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    # def product_params
-    #   params.require(:product).permit(:)
-    # end
-
-
 end
-

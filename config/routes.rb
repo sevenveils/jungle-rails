@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   resources :products, only: [:index, :show] do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:create, :destroy]
   end
 
   resources :categories, only: [:index, :show]
@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     put    :add_item
     delete :remove_item
   end
-
 
   resources :orders, only: [:create, :show]
 
