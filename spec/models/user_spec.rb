@@ -51,30 +51,34 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    it 'should not authenticate if email matches an existing user' do
-      user1 = User.create email: 'user@example.com', first_name: 'John', last_name: 'Doe', password: 'password', password_confirmation: 'password'
-      user2 = User.create email: 'user2@exmaple.com', first_name: 'John', last_name: 'Doe', password: 'password', password_confirmation: 'password'
-      expect(user2).to be_valid
+    it 'should authenticate if email matches an existing user' do
+      user = User.create email: 'user@example.com', first_name: 'John', last_name: 'Doe', password: 'password', password_confirmation: 'password'
+      expect(user).to be_valid
     end
 
-    it 'should be valid if email is not case sensitive' do
+    it 'should be valid if email has capital letters' do
       user = User.new(email: 'USER@EXAMPLE.COM', first_name: 'John', last_name: 'Doe', password: 'password', password_confirmation: 'password')
       expect(user).to be_valid
     end
 
     it 'should not authenticate without a password' do
-      user = User.new password: nil, password_confirmation: nil
+      user = User.new email: 'user@example.com', first_name: 'John', last_name: 'Doe', password: nil, password_confirmation: nil
       expect(user).to_not be_valid
     end
 
     it 'should not authenticate with a short password' do
-      user = User.new password: 'short', password_confirmation: 'short'
+      user = User.new email: 'user@example.com', first_name: 'John', last_name: 'Doe', password: 'short', password_confirmation: 'short'
       expect(user).to_not be_valid
     end
 
     it 'should not authenticate with a password confirmation mismatch' do
-      user = User.new password: 'pass', password_confirmation: 'password'
+      user = User.new email: 'user@example.com', first_name: 'John', last_name: 'Doe', password: 'pass', password_confirmation: 'password'
       expect(user).to_not be_valid
+    end
+
+    it 'should authenticate if there are trailing white spaces in email field' do
+      user = User.new email: '  user@example.com ', first_name: 'John', last_name: 'Doe', password: 'password', password_confirmation: 'password'
+      expect(user).to be_valid
     end
   end
 end
